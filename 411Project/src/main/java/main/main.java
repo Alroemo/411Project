@@ -5,10 +5,14 @@
  */
 package main;
 
+import java.net.Socket;
+
 /**
  *
  * @author Alex
  */
 public class main {
-    
+    public static void main(String [] args){
+        //HTTPConnection connection = new HTTPConnection(new Socket());
+    }
 }
