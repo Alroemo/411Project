@@ -10,26 +10,28 @@ package main;
  * @author Alex
  */
 public class FormView {
+
     String html;
-    
-    public FormView(){
+
+    public FormView() {
         html = "<html>"
-                +"<body>"
+                + "<body>"
                 + "<form submit='/submit'>"
                 + "<p>The <input type='text' name='word'></input> went to the store</p>"
                 + "<input type='submit' name='submit'><br>"
                 + "</form>"
                 + "</body>"
-                +"</html>";
+                + "</html>";
     }
-    
-    public String getView(){
+
+    public String getView(Sentence sentence) {
         html = "<html>"
-                +"<body>"
-                + "<p>The <input></input> went to the store</p>"
+                + "<body>"
+                + "<p>Hello</p>"
+                + "<p>" + sentence.sentencePart1 + "<input></input>" + sentence.sentencePart2 + "</p>"
                 + "<input type='submit' name='submit'><br>"
                 + "</body>"
-                +"</html>"; 
+                + "</html>";
         return html;
     }
 }
