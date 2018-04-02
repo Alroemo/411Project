@@ -13,18 +13,26 @@ import java.util.*;
  */
 public class Story {
 
-    List<String> sentence;
+    List<Sentence> sentence;
 
     public Story() {
 
     }
 
-    public List<String> getSentence() {
+    public List<Sentence> getSentence() {
         return sentence;
     }
 
-    public void setSentence(List<String> sentence) {
+    public void setSentence(List<Sentence> sentence) {
         this.sentence = sentence;
+    }
+    
+    public String makeStory(){
+        String story = "";
+            for(int i = 0; i < sentence.size(); i++){
+                story += sentence.get(i);
+            }
+        return story;
     }
 
 }

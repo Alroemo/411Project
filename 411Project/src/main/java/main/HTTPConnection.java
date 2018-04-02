@@ -22,9 +22,9 @@ public class HTTPConnection implements Runnable {
     HTTPConnection(Socket socket) {
         this.clientSocket = socket;
     }
-    
+
     public static void main(String args[]) {
-       
+
         System.out.println("Multi-Threaded Server Started");
         try {
             ServerSocket serverSocket = new ServerSocket(8080);
@@ -47,15 +47,17 @@ public class HTTPConnection implements Runnable {
         try (BufferedReader bis = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintStream out = new PrintStream(clientSocket.getOutputStream())) {
             String inputLine = bis.readLine().toLowerCase();
+            
             if ((inputLine.indexOf("get") > -1) && (inputLine.indexOf("/form") > -1)) {
                 out.print("HTTP/1.1 200 OK\n\n");
+                Sentence newSentence = new Sentence("The _ went to the store");
+                System.out.println(newSentence.sentencePart1 + newSentence.sentencePart2);
+                out.print(hview.getView(newSentence) + "\n");
                 if (inputLine.indexOf("submit") > -1) {
                     System.out.println("New sentence completed");
-                    Sentence newSentence = new Sentence("The _ went to the store", inputLine);
-                    out.print(hview.getView());
-                }
-                else {
-                    out.print(hview.getView() + "\n");
+                    //out.print(hview.getView(newSentence));
+                } else {
+                    
                 }
             }
             clientSocket.close();
