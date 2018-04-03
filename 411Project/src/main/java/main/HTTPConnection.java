@@ -56,6 +56,8 @@ public class HTTPConnection implements Runnable {
                 if (inputLine.indexOf("submit") > -1) {
                     System.out.println("New sentence completed");
                     //out.print(hview.getView(newSentence));
+                    String resultSentence = newSentence.convertSentence(inputLine);
+                    
                 } else {
                     
                 }

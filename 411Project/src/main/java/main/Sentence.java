@@ -27,7 +27,16 @@ public class Sentence {
     
     //converts "the _ went to the store" to "the man went to the store"
     public String convertSentence(String inputWord){
-        completeSentence = sentencePart1 + inputWord + sentencePart2;
+        String entry = "";
+        entry = inputWord.substring((inputWord.indexOf("entry=")), (inputWord.indexOf("&")));
+        entry = entry.replace("entry=", "");
+        completeSentence = sentencePart1 +" " + entry + sentencePart2;
         return completeSentence;
     }
+    
+    public boolean checkIfBlank(){
+        
+        return false;
+    }
+    
 }
