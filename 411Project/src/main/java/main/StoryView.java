@@ -24,4 +24,13 @@ public class StoryView {
                 + "</body>"
                 +"</html>";
     }
+    
+    public String getView(Story story){
+        html = "<html>"
+                +"<body>"
+                +"<p>"+story.makeStory()+"</p>"
+                + "</body>"
+                +"</html>";
+        return html;
+    }
 }

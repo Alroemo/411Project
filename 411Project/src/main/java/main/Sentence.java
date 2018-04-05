@@ -19,6 +19,7 @@ public class Sentence {
     
     public Sentence(String _blankSentence){
         blankSentence = _blankSentence;
+        completeSentence = _blankSentence;
         sentencePart1 = blankSentence.substring(0, blankSentence.indexOf("_") - 1);
         sentencePart2 = blankSentence.substring(blankSentence.indexOf("_") + 1);
     }

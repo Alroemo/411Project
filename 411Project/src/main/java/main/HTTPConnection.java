@@ -42,6 +42,10 @@ public class HTTPConnection implements Runnable {
     }
 
     public void run() {
+        Story story = new Story();
+        Sentence newSentence = new Sentence("The _ went to the store");
+        story.addSentence(newSentence);
+        
         System.out.println("Client Thread Started");
         FormView hview = new FormView();
         try (BufferedReader bis = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -50,17 +54,22 @@ public class HTTPConnection implements Runnable {
             
             if ((inputLine.indexOf("get") > -1) && (inputLine.indexOf("/form") > -1)) {
                 out.print("HTTP/1.1 200 OK\n\n");
-                Sentence newSentence = new Sentence("The _ went to the store");
+                
                 System.out.println(newSentence.sentencePart1 + newSentence.sentencePart2);
-                out.print(hview.getView(newSentence) + "\n");
+                
                 if (inputLine.indexOf("submit") > -1) {
                     System.out.println("New sentence completed");
                     //out.print(hview.getView(newSentence));
                     String resultSentence = newSentence.convertSentence(inputLine);
                     
                 } else {
-                    
+                    out.print(hview.getView(newSentence) + "\n");
                 }
+            }
+            else if ((inputLine.indexOf("get") > -1) && (inputLine.indexOf("/story") > -1)) {
+                out.print("HTTP/1.1 200 OK\n\n");
+                StoryView view = new StoryView();
+                out.print(view.getView(story) + "\n");
             }
             clientSocket.close();
             System.out.println("Client Connection Terminated");

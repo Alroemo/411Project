@@ -15,18 +15,21 @@ import java.util.*;
  */
 public class Story {
 
-    List<Sentence> sentence;
+    ArrayList<Sentence> sentence = new ArrayList();
 
     public Story() {
-
     }
 
-    public List<Sentence> getSentence() {
+    public ArrayList<Sentence> getSentence() {
         return sentence;
     }
 
-    public void setSentence(List<Sentence> sentence) {
+    public void setSentence(ArrayList<Sentence> sentence) {
         this.sentence = sentence;
+    }
+    
+    public void addSentence(Sentence newSentence){
+        sentence.add(newSentence);
     }
     
     public void setSentence(int index, Sentence newSentence){
@@ -36,7 +39,7 @@ public class Story {
     public String makeStory(){
         String story = "";
             for(int i = 0; i < sentence.size(); i++){
-                story += sentence.get(i);
+                story += sentence.get(i).completeSentence;
             }
         return story;
     }
